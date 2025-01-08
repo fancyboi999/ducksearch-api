@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  duckduckgo-api:
+    build: .
+    image: duckduckgo-api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - FASTAPI_CONFIG=production
+      # 如果需要代理，取消下面两行的注释并配置
+      # - http_proxy=http://your-proxy:port
+      # - https_proxy=http://your-proxy:port
+    volumes:
+      - ./logs:/app/logs
